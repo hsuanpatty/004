@@ -997,7 +997,7 @@ input[type=checkbox] {
   margin: 0 auto;
   background: #ffffff;
   border: 1px solid #dfe6e9;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px  ;
   overflow: hidden; /* 防止內容溢出邊界 */
 }
 
@@ -1408,9 +1408,19 @@ td.start-date .date-box::after {
 
 @media (max-width: 575.98px) {
   .etd-1 .txt {
-    font-size: 13px;
+    font-size: 15px;
     height: 17px;
     padding-top: 0;
-    font-weight: normal;
-}
+    font-weight: 600;
+  }
+
+  .etd-1 td {
+    height: 50px;
+  }
+
+  .etd-1 td.start-date .date-box,
+  .etd-1 td.end-date .date-box,
+  .etd-1 td.hover-end .date-box { 
+    height: 50px;
+  }
 }
