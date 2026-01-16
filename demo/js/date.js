@@ -109,14 +109,13 @@
                         startDate = clicked;
 
                         if (window.innerWidth < 576) {
-                            // 手機板：選完去程自動關閉
+                            // 手機版：選完去程自動關閉
                             hideCalendar();
                         } else {
                             // PC版：切換到回程模式
                             activeMode = "end";
                         }
                     } else if (activeMode === "end") {
-                        // 回程可以等於出發日期（當天來回）
                         if (clicked < startDate) {
                             alert("回程日期不能早於出發日期");
                             return;
@@ -240,6 +239,45 @@
         if (nextMob) nextMob.onclick = handleNext;
         if (prev) prev.onclick = handlePrev;
 
+        // ===== 電腦版允許輸入/刪除 =====
+        if(input){
+            const setReadonly = () => {
+                input.readOnly = window.innerWidth < 576;
+            };
+            setReadonly();
+            window.addEventListener('resize', setReadonly);
+
+            input.addEventListener('input', () => {
+                if(window.innerWidth < 576) return; // 手機版禁止輸入
+
+                const val = input.value.trim();
+                if(!val){
+                    startDate = null;
+                    endDate = null;
+                    updateInputText();
+                    updateUI();
+                    return;
+                }
+
+                const parts = val.split('~').map(s => s.trim());
+                const parseDate = s => {
+                    const [y,m,d] = s.split('/').map(Number);
+                    return (!y||!m||!d)?null:new Date(y,m-1,d);
+                }
+
+                const sDate = parseDate(parts[0]);
+                const eDate = parts[1]?parseDate(parts[1]):null;
+
+                if(sDate && sDate >= today) startDate = sDate;
+                else startDate = null;
+
+                if(eDate && eDate >= startDate) endDate = eDate;
+                else endDate = null;
+
+                updateUI();
+            });
+        }
+
         // ===== Render 整個月曆 =====
         function render() {
             const m1 = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1);
@@ -261,14 +299,15 @@
                 prevBtn.disabled = m1 <= thisMonth;
             }
 
-            updateUI();         // 更新日期狀態
-            attachCellEvents(); // 綁定點擊事件
+            updateUI();
+            attachCellEvents();
         }
 
         updateInputText();
         render();
     });
 })();
+
 
 
 
@@ -646,3 +685,4 @@ function animateHeight($el, from, to, duration, callback) {
 //         render();
 //     });
 // })();
+
