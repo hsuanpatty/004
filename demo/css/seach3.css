@@ -1203,6 +1203,7 @@ input[type=checkbox] {
         transition: color 0.2s; z-index: 1010; font-weight: 600; 
     }
     .etd-1 .pc-close-btn:hover { color: #ff625d; }
+
 }
 
 /* --- 手機版樣式 (575.98px 以下) --- */
@@ -1397,7 +1398,7 @@ td.start-date .date-box::after {
 
 .etd-1 td.in-range::before, .etd-1 td.hover-range::before {
     content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(255, 98, 93, 0.2); z-index: 0;
+    background: rgba(255, 98, 93, 0.15); z-index: 0;
 }
 .etd-1 .date-box { position: relative; z-index: 3; display: flex; flex-direction: column; line-height: 1.2; }
 .etd-1 .txt { font-size: 11px; height: 12px; margin-top: 2px; font-weight: normal; }
