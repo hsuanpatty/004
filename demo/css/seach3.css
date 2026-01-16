@@ -825,7 +825,7 @@ input[type=checkbox] {
     position: absolute;
     top: 6px;              
     left: 10px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     color: #818181;
     z-index: 1;
@@ -918,7 +918,7 @@ input[type=checkbox] {
   }
 
   .sass-form-label {
-    font-size: 11px;
+    font-size: 14px;
     margin-bottom: 3px;
     top: 10px;
   }
@@ -932,6 +932,14 @@ input[type=checkbox] {
 
   .checkLabel-box {
     padding: 4px 0 2px;
+  }
+
+  #keyWords input,
+  .sass-form-select {           
+    height: 58px;           
+    padding-top: 31px;     
+    padding-bottom: 8px;  
+    font-size: 16px;
   }
 }
 
@@ -1248,12 +1256,12 @@ input[type=checkbox] {
     }
 
     .etd-1 .m-label { 
-        font-size: 11px; color: #888; margin-bottom: 4px; 
+        font-size: 14px; color: #888; margin-bottom: 4px; 
         font-weight: normal; line-height: 1;
     }
 
     .etd-1 .m-value { 
-        font-size: 14px; font-weight: normal; color: #333; 
+        font-size: 16px; font-weight: normal; color: #333; 
         height: auto; text-align: left; line-height: 1.2;
     }
 
