@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./css/owl.carousel.min.css" />
     <link rel="stylesheet" href="./css/owl.theme.default.min.css" />
     <!-- 2026填加 dater -->
-    <link rel="stylesheet" href="./css/daterangepicker.css" />
+    <!-- <link rel="stylesheet" href="./css/daterangepicker.css" /> -->
     <!-- style -->
     <link rel="stylesheet" type="text/css" href="./css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="./css/slick/slick-theme.css" />
@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="./css/indexlink.css" />
 
     <!-- 2026填加 搜尋 -->
-    <link rel="stylesheet" href="./css/seach.css" />
+    <link rel="stylesheet" href="./css/seach3.css" />
   </head>
 
   <body>
@@ -1358,7 +1358,7 @@
             <a href="https://www.artisan.com.tw/fittrip/fittrip.aspx" target="_blank" class="button button--primary primary-w44 button-4">國際機票．機+酒</a>
           </div>
           <!-- xl -->
-          <div class="sass-property-search sass-search-sm">
+          <div id="search-xl" class="sass-property-search sass-search-sm">
             <div class="sass-search-form-container">
               <div class="sass-form-group dest-1 group-100">
                 <label class="sass-form-label">目的地</label>
@@ -1385,8 +1385,47 @@
 
               <div id="search-tool" class="etd-1 sass-form-group">
                 <label class="sass-form-label">出發區間</label>
-                <div class="searchBox-date">
-                  <input name="range" id="date-range" />
+                <div class="date-wrap">
+                  <input type="text" id="dateInput" class="pc-only" readonly />
+
+                  <div class="mobile-selector mobile-only">
+                    <div class="m-input-group" id="mStartBtn">
+                      <span class="m-label">出發日期</span>
+                      <span class="m-value" id="mStartVal"></span>
+                    </div>
+                    <div class="m-input-group" id="mEndBtn">
+                      <span class="m-label">回程日期</span>
+                      <span class="m-value" id="mEndVal"></span>
+                    </div>
+                  </div>
+
+                  <div class="overlay" id="overlay"></div>
+
+                  <div class="calendar" id="calendar">
+                    <div class="pc-close-btn" id="pcCloseBtn">✕</div>
+
+                    <div class="m-close-btn" id="mCloseBtn">✕</div>
+                    <div id="statusHint" class="editing-hint">請選擇 [出發日期]</div>
+
+                    <div class="month-container">
+                      <div class="month-box">
+                        <div class="nav">
+                          <button id="prevBtn">❮</button>
+                          <span id="title1" class="title-text"></span>
+                          <button id="nextBtnMobile" class="m-next-btn">❯</button>
+                        </div>
+                        <div id="table1"></div>
+                      </div>
+                      <div class="month-box">
+                        <div class="nav">
+                          <button style="visibility: hidden">❮</button>
+                          <span id="title2" class="title-text"></span>
+                          <button id="nextBtnPC">❯</button>
+                        </div>
+                        <div id="table2"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1417,7 +1456,7 @@
             </div>
           </div>
           <!-- sm -->
-          <div class="container">
+          <div id="search-sm" class="container">
             <div class="accordion-container">
               <div class="accordion-item">
                 <button type="button" class="accordion-button" aria-expanded="true">
@@ -1452,8 +1491,45 @@
 
                       <div id="search-tool" class="etd-1 sass-form-group">
                         <label class="sass-form-label">出發區間</label>
-                        <div class="searchBox-date daterangepicker-wrapper">
-                          <input name="range" id="date-range-sm" />
+                        <div class="date-wrap">
+                          <input type="text" id="dateInput" class="pc-only" readonly />
+
+                          <div class="mobile-selector mobile-only">
+                            <div class="m-input-group" id="mStartBtn">
+                              <span class="m-label">出發日期</span>
+                              <span class="m-value" id="mStartVal"></span>
+                            </div>
+                            <div class="m-input-group" id="mEndBtn">
+                              <span class="m-label">回程日期</span>
+                              <span class="m-value" id="mEndVal"></span>
+                            </div>
+                          </div>
+
+                          <div class="overlay" id="overlay"></div>
+
+                          <div class="calendar" id="calendar">
+                            <div class="m-close-btn" id="mCloseBtn">✕</div>
+                            <div id="statusHint" class="editing-hint">請選擇 [出發日期]</div>
+
+                            <div class="month-container">
+                              <div class="month-box">
+                                <div class="nav">
+                                  <button id="prevBtn">❮</button>
+                                  <span id="title1" class="title-text"></span>
+                                  <button id="nextBtnMobile" class="m-next-btn">❯</button>
+                                </div>
+                                <div id="table1"></div>
+                              </div>
+                              <div class="month-box">
+                                <div class="nav">
+                                  <button style="visibility: hidden">❮</button>
+                                  <span id="title2" class="title-text"></span>
+                                  <button id="nextBtnPC">❯</button>
+                                </div>
+                                <div id="table2"></div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -4145,7 +4221,7 @@
       <script src="./js/jquery-1.12.4.min.js"></script>
 
       <!-- 2. 你的 JS 腳本（非 daterangepicker 相關） -->
-      <script type="text/javascript" src="./js/menu.js"></script>
+      <script type="text/javascript" src="./js/HeaderMenu_2024.js"></script>
       <script src="./js/owl.carousel.min.js"></script>
       <script src="./js/flatpickr.js"></script>
       <script src="./js/picturefill.min.js"></script>
@@ -4158,9 +4234,9 @@
       <script type="text/javascript" src="./js/main-1.js"></script>
       <script src="./css/slick/slick.js"></script>
 
-      <script src="./js/moment.min.js"></script>
-      <script src="./js/zh-tw.js"></script>
-      <script src="./js/daterangepicker.min.js"></script>
+      <!-- <script src="./js/moment.min.js"></script>
+      <script src="./js/zh-tw.js"></script> -->
+      <!-- <script src="./js/daterangepicker.min.js"></script> -->
 
       <!-- 最後 -->
       <script src="./js/date.js"></script>
